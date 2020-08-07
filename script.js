@@ -37,40 +37,19 @@ const multTypes = pokémon.filter(p => p.types.length > 1);
 const namesOnly = pokémon.map(p => p.name)
 
 // an array with just the names of pokemon with an id greater than 99
-const idG99 = pokémon.map(p => {
-    if (p.id > 99)
-        return (p.name)
-}
-);
+const idG99 = pokémon
+    .filter(p => p.id > 99)
+    .map(p => p.name);
 
 // an array with just the names of the pokemon whose only type is poison
-const poisonOnly = pokémon.filter(p => p.types.includes('poison') && p.types == 1);
+const poisonOnly = pokémon
+    .filter(p => p.types.includes('poison') && p.types.length == 1)
+    .map(p => p.name);
 
 // an array containing just the first type of all the pokemon whose second type is 'flying'
-const secondFlying = pokémon.filter(p => p.types.includes('flying'))
-
-const secondFlying = pokémon.map(p => { // closest to desired result.
-    if (p.types[1] == "flying")
-        return (p.types[0])
-    }
-);
-
-const secondFlying = pokémon.filter( p => p.types[1] == "flying").map(p.types[0]); 
+const secondFlying = pokémon
+    .filter(p => p.types[1] == 'flying')
+    .map(p => p.types[0]);
 
 // a  count of the number of pokemon that are normal type
-
-function normalCount(){
-    let count =0;
-    if (p.type.includes("normal")){
-        count++ 
-    }
-    return count;
-}
-
-const normalCount = pokémon.filter ( p => {
-    let count = 0;
-    if (p.types.includes("normal"))
-    count++
-    return count; 
-    }
-);
+const normalCount = pokémon.filter(p => p.types.includes("normal")).length;
